@@ -5,23 +5,30 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-      {{title + '!'}}
-    </div>
-    <div>
-    {{numberOne + numberTwo}}
-    </div>
-    <div>
-    {{ isHappy ? ':)' : ':('}}
+    <button (click)="handleClick($event)">
+    Change Name
+    </button>
+      <input
+      type="text"
+      [value]="name"
+      (input)="handleInput($event)"
+      (blur)="handleBlur($event)">
+    <div>{{name}}</div>
     </div>
   `
 })
 export class AppComponent {
-  title: string;
-  numberOne: number = 1;
-  numberTwo: number = 2;
-  isHappy: boolean = false;
+  name: string = "Todd";
 
-  constructor() {
-    this.title = 'Ultimate Angular';
+  handleClick(evt: any) {
+    this.name = "";    
+  }
+
+  handleInput(evt: any) {
+    this.name = evt.target.value;    
+  }
+
+  handleBlur(evt: any) {
+    this.name = evt.target.value;    
   }
 }
