@@ -5,20 +5,20 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-    <button (click)="handleClick(username.value)">
-    Get value
-    </button>
-      <input
-      type="text" #username=""
-      >
-    <div>{{name}}</div>
+    <input
+      type="text"
+      [value]="name"
+      (input)="handleChange($event.target.value)">
+    <div *ngIf="name.length > 2">
+    Searching for... {{ name }}
+    </div>
     </div>
   `
 })
 export class AppComponent {
-  name: string = "Todd";
+  name: string = '';
 
-  handleClick(value: string) {
-    this.name = value;    
+  handleChange(value: string) {
+    this.name = value;
   }
 }
