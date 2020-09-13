@@ -1,24 +1,40 @@
 import { Component } from '@angular/core';
 
+interface Passenger {
+  id: number;
+  fullname: string;
+  checkedIn: boolean;
+}
+
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
-  template: `
-    <div class="app">
-    <input
-      type="text"
-      [value]="name"
-      (input)="handleChange($event.target.value)">
-    <div *ngIf="name.length > 2">
-    Searching for... {{ name }}
-    </div>
-    </div>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  name: string = '';
-
-  handleChange(value: string) {
-    this.name = value;
-  }
+  passengers: Passenger[] = [
+    {
+      id: 1,
+      fullname: 'Stephen',
+      checkedIn: true
+    },
+    {
+      id: 2,
+      fullname: 'Rose',
+      checkedIn: false
+    },
+    {
+      id: 3,
+      fullname: 'James',
+      checkedIn: true
+    }, {
+      id: 4,
+      fullname: 'Louise',
+      checkedIn: true
+    },{
+      id: 5,
+      fullname: 'Tina',
+      checkedIn: false
+    }
+  ];
 }
