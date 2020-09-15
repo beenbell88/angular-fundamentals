@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit OnChanges } from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges } from "@angular/core";
 import { Passenger } from "../../models/passenger.interface";
 
 @Component({
@@ -56,6 +56,7 @@ export class PassengerDetailComponent implements OnInit, OnChanges {
   onNameChange(value: string) {
     this.detail.fullname = value;
   }
+
   toggleEdit() {
     if (this.editing) {
       this.onEdit();
