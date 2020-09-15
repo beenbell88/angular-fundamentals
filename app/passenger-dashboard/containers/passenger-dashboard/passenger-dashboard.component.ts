@@ -1,52 +1,75 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { Passenger } from '../../models/passenger.interface';
+import { Passenger } from "../../models/passenger.interface";
 
 @Component({
-  selector: 'passenger-dashboard',
-  styleUrls: ['passenger-dashboard.component.scss'],
-  templateUrl: 'passenger-dashboard.component.html'
+  selector: "passenger-dashboard",
+  styleUrls: ["passenger-dashboard.component.scss"],
+  template: `
+    <div>
+      <passenger-count [items]="passengers"> </passenger-count>
+      <passenger-detail
+        *ngFor="let passenger of passengers"
+        [detail]="passenger"
+        (edit)="handleEdit($event)"
+        (remove)="handleRemove($event)"
+      >
+      </passenger-detail>
+    </div>
+  `,
 })
-
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
 
   ngOnInit() {
-    console.log('ngOnInit')
+    console.log("ngOnInit");
     this.passengers = [
       {
         id: 1,
-        fullname: 'Stephen',
+        fullname: "Stephen",
         checkedIn: true,
         checkedInDate: 1490742000000,
-        children: null
+        children: null,
       },
       {
         id: 2,
-        fullname: 'Rose',
+        fullname: "Rose",
         checkedIn: false,
         checkedInDate: null,
-        children: [{name: 'Ted', age: 12}, {name:'Chloe', age: 7}]
+        children: [
+          { name: "Ted", age: 12 },
+          { name: "Chloe", age: 7 },
+        ],
       },
       {
         id: 3,
-        fullname: 'James',
+        fullname: "James",
         checkedIn: true,
         checkedInDate: 1491606000000,
-        children: null
-      }, {
+        children: null,
+      },
+      {
         id: 4,
-        fullname: 'Louise',
+        fullname: "Louise",
         checkedIn: true,
         checkedInDate: 1488412800000,
-        children: [{name:'Jessica', age: 1}]
-      },{
+        children: [{ name: "Jessica", age: 1 }],
+      },
+      {
         id: 5,
-        fullname: 'Tina',
+        fullname: "Tina",
         checkedIn: false,
         checkedInDate: null,
-        children: null
-      }
+        children: null,
+      },
     ];
+  }
+
+  handleEdit(event) {
+    console.log(event)
+  }
+
+  handleRemove(event) {
+    console.log(event)
   }
 }
