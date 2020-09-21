@@ -7,7 +7,6 @@ import { Passenger } from "../../models/passenger.interface";
   styleUrls: ["passenger-form.component.scss"],
   template: `
     <form #form="ngForm" novalidate>
-      {{ detail | json }}
       <div>
         Passenger name:
         <input type="text" name="fullname" [ngModel]="detail?.fullname" required #fullname="ngModel">
@@ -49,7 +48,7 @@ import { Passenger } from "../../models/passenger.interface";
         </select>
       </div>
 
-      {{ form.value | json }}
+      <button type="submit" [disabled]="form.invalid">Update passenger</button>
     </form>
   `,
 })
