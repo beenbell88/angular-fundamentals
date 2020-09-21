@@ -10,11 +10,13 @@ import { Passenger } from "../../models/passenger.interface";
       {{ detail | json }}
       <div>
         Passenger name:
-        <input type="text" name="fullname" [ngModel]="detail?.fullname" />
+        <input type="text" name="fullname" [ngModel]="detail?.fullname" required #fullname="ngModel">
+        <div *ngIf="fullname.errors?.required && fullname.dirty" class="error">Passenger name is required</div>
       </div>
       <div>
         Passenger ID:
-        <input type="number" name="id" [ngModel]="detail?.id" />
+        <input type="number" name="id" [ngModel]="detail?.id" required #id="ngModel">
+        <div *ngIf="id.errors?.required && id.dirty" class="error">Passenger ID is required</div>
       </div>
       <div>
         <label>
