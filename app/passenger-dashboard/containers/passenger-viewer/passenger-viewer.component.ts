@@ -9,7 +9,8 @@ import { PassengerDashboardService } from "../../passenger-dashboard.service";
   template: `
   <div>
     <passenger-form
-    [detail]="passenger">
+    [detail]="passenger"
+    (update)="onUpdatePassenger($event)">
     </passenger-form>
 </div>
   `
@@ -17,12 +18,19 @@ import { PassengerDashboardService } from "../../passenger-dashboard.service";
 export class PassengerViewerComponent implements OnInit {
   passenger: Passenger;
 
-  constructor(private passengerService: PassengerDashboardService) {
+  constructor(private passengerService: PassengerDashboardService) {}
+
+  ngOnInit(){
     this.passengerService
     .getPassenger(1)
     .subscribe((data: Passenger) => this.passenger = data)
-
   }
 
-  ngOnInit(){}
+  onUpdatePassenger(event: Passenger) {
+    this.passengerService
+    .updatePassenger(event)
+    .subscribe((data: Passenger) => {
+      this.passenger = Object.assign({}, this.passenger, data);
+    })
+  }
 }
