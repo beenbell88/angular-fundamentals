@@ -1,7 +1,7 @@
 {
   "passengers": [
     {
-      "fullname": "Stevie",
+      "fullname": "Steven",
       "id": 1,
       "checkedIn": true,
       "baggage": "hand-hold",
@@ -36,11 +36,10 @@
       "baggage": ""
     },
     {
-      "id": 5,
       "fullname": "Tina",
+      "id": 5,
       "checkedIn": false,
-      "checkedInDate": null,
-      "baggage": ""
+      "baggage": "none"
     }
   ]
 }
