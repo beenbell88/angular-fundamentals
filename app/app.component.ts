@@ -14,6 +14,7 @@ interface Nav {
 export class AppComponent {
 nav: Nav[] = [
   { link: '/', name: 'Home', exact: true },
+  { link: '/passengers', name: 'Passengers', exact: false },
   { link: '/oops', name: '404', exact: false },
 ]
 
